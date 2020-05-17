@@ -56,8 +56,8 @@ function Get-GPOMissingPermission {
             Write-Verbose -Message "Checking '$($gpo.DisplayName)' link"
             [xml]$GPOXMLReport = $gpo | Get-GPOReport -ReportType xml
             If ($GPO.User.Enabled) {
-                $GPOPermissionForAuthUsers = Get-GPPermission -Guid $GPO.Id -All | Select-Object -ExpandProperty Trustee | Where-Object {$_.Name -eq "Authenticated Users"}
-                $GPOPermissionForDomainComputers = Get-GPPermission -Guid $GPO.Id -All | Select-Object -ExpandProperty Trustee | Where-Object {$_.Name -eq "Domain Computers"}
+                $GPOPermissionForAuthUsers = Get-GPPermission -Guid $GPO.Id -All | Select-Object -ExpandProperty Trustee | Where-Object { $_.Name -eq "Authenticated Users" }
+                $GPOPermissionForDomainComputers = Get-GPPermission -Guid $GPO.Id -All | Select-Object -ExpandProperty Trustee | Where-Object { $_.Name -eq "Domain Computers" }
                 If (!$GPOPermissionForAuthUsers -and !$GPOPermissionForDomainComputers) {
                     $MissingPermissionsGPOArray += $gpo
                 }
@@ -75,8 +75,8 @@ function Get-GPOMissingPermission {
         Write-Verbose -Message "Checking '$($gpo.DisplayName)' link"
         [xml]$GPOXMLReport = $gpo | Get-GPOReport -ReportType xml
         If ($GPO.User.Enabled) {
-            $GPOPermissionForAuthUsers = Get-GPPermission -Guid $GPO.Id -All | Select-Object -ExpandProperty Trustee | Where-Object {$_.Name -eq "Authenticated Users"}
-            $GPOPermissionForDomainComputers = Get-GPPermission -Guid $GPO.Id -All | Select-Object -ExpandProperty Trustee | Where-Object {$_.Name -eq "Domain Computers"}
+            $GPOPermissionForAuthUsers = Get-GPPermission -Guid $GPO.Id -All | Select-Object -ExpandProperty Trustee | Where-Object { $_.Name -eq "Authenticated Users" }
+            $GPOPermissionForDomainComputers = Get-GPPermission -Guid $GPO.Id -All | Select-Object -ExpandProperty Trustee | Where-Object { $_.Name -eq "Domain Computers" }
             If (!$GPOPermissionForAuthUsers -and !$GPOPermissionForDomainComputers) {
                 return Write-Warning "'$($GPo.DisplayName)' do not grant any permissions to the 'Authenticated Users' or 'Domain Computers' groups"
             }

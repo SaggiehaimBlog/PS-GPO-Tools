@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-Get Disabled GPO in your forest.
+Get Empty GPO in your forest.
 
 ## SYNTAX
 

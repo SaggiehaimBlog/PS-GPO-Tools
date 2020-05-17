@@ -22,6 +22,7 @@
             ProjectUri   = 'https://github.com/Saggiehaim/PS-GPO-Tools'
             #IconUri      = ''
             #ReleaseNotes = 
+            ExternalModuleDependencies = @('GroupPolicy')
         }
     }
 }

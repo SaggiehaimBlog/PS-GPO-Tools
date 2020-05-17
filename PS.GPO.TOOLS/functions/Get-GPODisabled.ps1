@@ -55,9 +55,9 @@ function Get-GPODisabled {
         ForEach ($gpo  in $GPOs) {
             Write-Verbose -Message "Checking '$($gpo.DisplayName)' status"
             switch ($gpo.GpoStatus) {
-                ComputerSettingsDisabled {$DisabledGPO += "in '$($gpo.DisplayName)' the Computer Settings Disabled"}
-                UserSettingsDisabled {$DisabledGPO += "in '$($gpo.DisplayName)' the User Settings Disabled"}
-                AllSettingsDisabled {$DisabledGPO += "in '$($gpo.DisplayName)' All Settings Disabled"}
+                ComputerSettingsDisabled { $DisabledGPO += "in '$($gpo.DisplayName)' the Computer Settings Disabled" }
+                UserSettingsDisabled { $DisabledGPO += "in '$($gpo.DisplayName)' the User Settings Disabled" }
+                AllSettingsDisabled { $DisabledGPO += "in '$($gpo.DisplayName)' All Settings Disabled" }
             }
         }
         if (($DisabledGPO).Count -ne 0) {
@@ -72,9 +72,9 @@ function Get-GPODisabled {
     else {
         Write-Verbose -Message "Checking '$($gpo.DisplayName)' link"
         switch ($gpo.GpoStatus) {
-            ComputerSettingsDisabled {return "in '$($gpo.DisplayName)' the Computer Settings Disabled"}
-            UserSettingsDisabled {return "in '$($gpo.DisplayName)' the User Settings Disabled"}
-            AllSettingsDisabled {return "in '$($gpo.DisplayName)' All Settings Disabled"}
+            ComputerSettingsDisabled { return "in '$($gpo.DisplayName)' the Computer Settings Disabled" }
+            UserSettingsDisabled { return "in '$($gpo.DisplayName)' the User Settings Disabled" }
+            AllSettingsDisabled { return "in '$($gpo.DisplayName)' All Settings Disabled" }
         }
         else {
             return Write-Output "in '$($gpo.DisplayName)' all settings enabled"
