@@ -1,6 +1,6 @@
 @{
     RootModule        = 'PS.GPO.TOOLS.psm1'
-    ModuleVersion     = '0.0.1'
+    ModuleVersion     = '0.0.2'
     # Can only use CompatiblePSEditions if PowerShellVersion is set to 5.1, not sure about limiting this to that version yet.
     # CompatiblePSEditions = @('Desktop')
     GUID              = 'fe8fc9be-9476-4c56-b680-89b1766e9c84'
