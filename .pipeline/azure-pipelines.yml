@@ -1,0 +1,36 @@
+trigger:
+  branches:
+    include:
+    - develop
+  paths:
+    include:
+    - /src/*
+
+jobs:
+- job: PowerShell_GPO_Tools_Build1
+  displayName: 'Test & Build'
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+
+  - task: PowerShell@2
+    displayName: 'Run PowerShell Script Analyzer'
+    inputs:
+      targetType: Inline
+      script: .\.pipeline\build.ps1 -Analyze -BasePath '.\src'
+
+
+  - task: PowerShell@2
+    displayName: 'Compile module'
+    inputs:
+      targetType: Inline
+      script: .\.pipeline\build.ps1 -Compile -BasePath '.' -Module 'GPOPSTools'
+
+
+  - task: PublishTestResults@2
+    displayName: 'Publish test results'
+    inputs:
+      testRunner: NUnit
+      testResultsFiles: '**/TestResults.xml'
+    condition: succeededOrFailed()
+
